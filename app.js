@@ -13,7 +13,7 @@ var w_conversation = watson.conversation({
     username: process.env.CONVERSATION_USERNAME || '09f5bd7b-8cdb-42c5-b3f9-bd7ca0b8718a',
     password: process.env.CONVERSATION_PASSWORD || 'OSofHHHz3Tvx',
     version: 'v1',
-    version_date: '2016-07-11'
+    version_date: '2017-02-03'
 });
 var workspace = process.env.WORKSPACE_ID || '5b821e1f-07b7-4525-b89b-7dad3deeb1e1';
 
