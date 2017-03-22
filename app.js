@@ -3,6 +3,7 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var watson = require('watson-developer-cloud');
 var app = express();
+var contid;
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -42,7 +43,8 @@ app.post('/webhook/', function (req, res) {
 		
 		var params = {
 			input: text,
-			context: {"conversation_id": conversation_id}
+			//context: {"conversation_id": conversation_id}
+			context: contid
 		}
 
 		var payload = {
@@ -66,6 +68,7 @@ app.post('/webhook/', function (req, res) {
 function callWatson(payload, sender) {
 	w_conversation.message(payload, function (err, convResults) {
 	console.log(convResults);
+	contid=convResults.context;
         if (err) {
             return responseToRequest.send("Erro.");
         }
