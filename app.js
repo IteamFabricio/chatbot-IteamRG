@@ -65,6 +65,7 @@ app.post('/webhook/', function (req, res) {
 
 function callWatson(payload, sender) {
 	w_conversation.message(payload, function (err, convResults) {
+	console.log(convResults);
         if (err) {
             return responseToRequest.send("Erro.");
         }
