@@ -87,8 +87,8 @@ function callWatson(payload, sender) {
 
 function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
-	//messageData = {text: text_ };
-	messageData = {text: "opa" };
+	messageData = {text: text_ };
+	//messageData = {text: "opa" }; - Retorno do texto para o Facebook
 
 	request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
