@@ -78,7 +78,7 @@ function callWatson(payload, sender) {
         if(convResults != null && convResults.output != null){
 			var i = 0;
 			while(i < convResults.output.text.length){
-				sendMessage(sender, convResults.output.text[i++]);
+				sendMessage(sender, "convResults.output.text[i++]");
 			}
 		}
             
@@ -95,7 +95,7 @@ function sendMessage(sender, text_) {
         method: 'POST',
         json: {
             recipient: { id: sender },
-            message: "messageData",
+            message: messageData,
         }
     }, function (error, response, body) {
         if (error) {
