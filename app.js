@@ -87,7 +87,27 @@ function callWatson(payload, sender) {
 
 function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
-	messageData = {text: text_ };
+	messageData = {text: text_,
+	attachment:{
+         "type":"template",
+         "payload":{
+         "template_type":"button",
+         "text":"Em que posso ajudar?",
+         "buttons":[
+           {
+             "type":"web_url",
+             "url":"https://petersapparel.parseapp.com",
+             "title":"Va para Website"
+            },
+           {
+             "type":"postback",
+             "title":"Inicie o Chat",
+             "payload":"USER_DEFINED_PAYLOAD"
+           }
+          ]
+        }
+      }
+    };
 	//messageData = {text: "opa" }; - Retorno do texto para o Facebook
 
 	request({
