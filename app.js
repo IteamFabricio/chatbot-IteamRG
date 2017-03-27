@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @IteamFabricio
- Sign out
- Watch 0
-  Star 0
-  Fork 1 IteamFabricio/chatbot-IteamRG
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathchatbot-IteamRG/app.js
-0da02d7  an hour ago
-@IteamFabricio IteamFabricio TesError
-1 contributor
-RawBlameHistory     
-143 lines (127 sloc)  4.48 KB
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
