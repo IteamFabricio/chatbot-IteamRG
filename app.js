@@ -117,7 +117,7 @@ function sendMessage(sender, text_) {
     }else {
     messageData = { text: text_ } ;
     }
-	//messageData = {text: "opa" }; - Retorno do texto para o Facebook
+	//messageData = {text: "opa" }; - Alteracao do parametro messageData de retorno para o Facebook
 
 	request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
