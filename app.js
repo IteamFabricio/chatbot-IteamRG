@@ -87,26 +87,36 @@ function callWatson(payload, sender) {
 
 function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
-	messageData = {attachment:{
-         "type":"template",
-         "payload":{
-         "template_type":"button",
-         "text":"Em que posso ajudar?",
-         "buttons":[
-           {
-             "type":"web_url",
-             "url":"https://petersapparel.parseapp.com",
-             "title":"Va para Website"
-            },
-           {
-             "type":"postback",
-             "title":"Inicie o Chat",
-             "payload":"USER_DEFINED_PAYLOAD"
-           }
-          ]
+	 if (text_ == "ITRGTX001") {
+        messageData = {
+            attachment: {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Possuo as seguintes opções de Tarifas",
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://petersapparel.parseapp.com",
+                            "title": "Tarifas de embarque"
+                        },
+                        {
+                            "type": "web_url",
+                            "url": "https://petersapparel.parseapp.com",
+                            "title": "Tarifas de Conexão"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Outros Serviços",
+                            "payload": "USER_DEFINED_PAYLOAD"
+                        }
+                    ]
+                }
+            }
         }
-      }
-    };
+    }else {
+    messageData = { text: text_ } ;
+    }
 	//messageData = {text: "opa" }; - Retorno do texto para o Facebook
 
 	request({
