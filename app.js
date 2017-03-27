@@ -87,8 +87,7 @@ function callWatson(payload, sender) {
 
 function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
-	messageData = {text: text_,
-	attachment:{
+	messageData = {attachment:{
          "type":"template",
          "payload":{
          "template_type":"button",
