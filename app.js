@@ -1,3 +1,21 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @IteamFabricio
+ Sign out
+ Watch 0
+  Star 0
+  Fork 1 IteamFabricio/chatbot-IteamRG
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathchatbot-IteamRG/app.js
+0da02d7  an hour ago
+@IteamFabricio IteamFabricio TesError
+1 contributor
+RawBlameHistory     
+143 lines (127 sloc)  4.48 KB
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
@@ -114,8 +132,17 @@ function sendMessage(sender, text_) {
                 }
             }
         }
-    }else {
-    messageData = { text: text_ } ;
+    }else if(text_ == "ITRGAL001"){
+		 messageData = {
+			 attachment: {
+			 "type":"image",
+			 "payload":{
+             "url":"http://3.bp.blogspot.com/-FRNL-lbo584/Tr60J_7hWhI/AAAAAAAAB-8/BPjBNj7fOCY/s1600/fastfood.png"	 
+			 }
+		    }
+		 }	
+	}else {
+			messageData = { text: text_ } ;
     }
 	//messageData = {text: "opa" }; - Alteracao do parametro messageData de retorno para o Facebook
 
@@ -140,3 +167,5 @@ var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
 app.listen(port, host);
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
