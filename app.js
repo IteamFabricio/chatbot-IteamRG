@@ -108,9 +108,9 @@ function sendMessage(sender, text_) {
                             "template_type":"generic",
                             "elements":[
                             {
-                                "title":"Ferrari",
-                                "image_url":"https://cdn1.vox-cdn.com/thumbor/-pG8Dcb_qtRf6te3ug12FHhqUDs=/1020x0/cdn0.vox-cdn.com/uploads/chorus_asset/file/4156848/Ferrari_F12tdf_3low.0.jpg",
-                                "subtitle":"Informações sobre Taxas",
+                                "title":"Tarifas",
+                                "image_url":"https://www.clinks.com.br/wp-content/uploads/2013/05/anunciar-passagens-aereas-rede-display.png",
+                                "subtitle":"Informações sobre Tarifas",
                                 //"default_action": {
                                 //"type": "web_url",
                                 //"url": "http://www.riogaleao.com/",
@@ -120,19 +120,19 @@ function sendMessage(sender, text_) {
                                 "buttons":[
                                 {
                                     "type":"web_url",
-                                    "url":"http://www.ferrari.com/en_en/",
-                                    "title":"View Website"
+                                    "url":"http://www.riogaleao.com/institucional/tarifas/",
+                                    "title":"Abrir Website"
                                 },
                                 {
                                     "type":"postback",
                                     "payload":"IT_TAXAS_TARIFAS",
-                                    "title":"Buy Tomorrow"
+                                    "title":"Duvidas Tarifas"
                                 }               
                                 ]      
                             },{
-                             "title":"Lamborghini",
-                                "image_url":"http://pictures.topspeed.com/IMG/crop/201603/2016-lamborghini-centenar-5_800x0w.jpg",
-                                "subtitle":"Meu Deus",
+                             "title":"Estacionamento",
+                                "image_url":"http://www.hotelalecrimcaxias.com.br/images/touch-icon-windowsphone.png",
+                                "subtitle":"Preços e Informações",
                                 //"default_action": {
                                 //"type": "web_url",
                                 //"url": "http://www.riogaleao.com/",
@@ -142,15 +142,20 @@ function sendMessage(sender, text_) {
                                 "buttons":[
                                 {
                                     "type":"web_url",
-                                    "url":"https://lamborghini.com",
-                                    "title":"View Website"
-                                }              
+                                    "url":"http://www.riogaleao.com/transportes-e-estacionamento/estacionamento/",
+                                    "title":"Estacionamento Website"
+                                },
+                                {
+                                    "type":"postback",
+                                    "payload":"IT_TAXAS_ESTACIONAMENTO",
+                                    "title":"Duvidas Estacionamento"
+                                }                
                                 ]    
                             },
                             {
-                             "title":"Porsche",
-                                "image_url":"http://bestcars.uol.com.br/bc/wp-content/uploads/2015/10/Porsche-Cayman-Black-Edition.jpg",
-                                "subtitle":"Meu Deus",
+                             "title":"Companhias Aéreas",
+                                "image_url":"http://icon-icons.com/icons2/290/PNG/512/flight_30822.png",
+                                "subtitle":"Duvidas Sobre Cia Aéreas",
                                 //"default_action": {
                                 //"type": "web_url",
                                 //"url": "http://www.riogaleao.com/",
@@ -160,9 +165,14 @@ function sendMessage(sender, text_) {
                                 "buttons":[
                                 {
                                     "type":"web_url",
-                                    "url":"http://www.porsche.com/",
-                                    "title":"View Website"
-                                }              
+                                    "url":"http://www.riogaleao.com/places-categories/companhias-aereas/",
+                                    "title":"Cia Aéreas Website"
+                                },
+                                {
+                                    "type":"postback",
+                                    "payload":"IT_TAXAS_CIAAREA",
+                                    "title":"Duvidas Cia Aéreas"
+                                } 
                                 ]    
                             }
                             ]
