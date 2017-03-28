@@ -122,7 +122,12 @@ function sendMessage(sender, text_) {
                                     "type":"web_url",
                                     "url":"http://www.ferrari.com/en_en/",
                                     "title":"View Website"
-                                }              
+                                },
+                                {
+                                    "type":"postback",
+                                    "payload":"IT_TAXAS_TARIFAS",
+                                    "title":"Buy Tomorrow"
+                                }               
                                 ]      
                             },{
                              "title":"Lamborghini",
