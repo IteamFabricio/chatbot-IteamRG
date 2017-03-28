@@ -109,7 +109,7 @@ function sendMessage(sender, text_) {
                             "elements":[
                             {
                                 "title":"Taxas",
-                                "image_url":"https://gerencianet.com.br/wp-content/themes/Gerencianet/images/sprite_assinaturas.png",
+                                "image_url":"http://www.sevenminds.es/portugues/assets/img/misc/foto-tarifas-roi.jpg",
                                 "subtitle":"Informações sobre Taxas",
                                 "default_action": {
                                 "type": "web_url",
