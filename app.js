@@ -124,6 +124,23 @@ function sendMessage(sender, text_) {
                                     "title":"View Website"
                                 }              
                                 ]      
+                            },{
+                             "title":"Taxas",
+                                "image_url":"http://pictures.topspeed.com/IMG/crop/201603/2016-lamborghini-centenar-5_800x0w.jpg",
+                                "subtitle":"Meu Deus",
+                                //"default_action": {
+                                //"type": "web_url",
+                                //"url": "http://www.riogaleao.com/",
+                                //"messenger_extensions": true,
+                                //"webview_height_ratio": "tall",
+                                //}
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"https://lamborghini.com",
+                                    "title":"View Website"
+                                }              
+                                ]    
                             }
                             ]
                         }
