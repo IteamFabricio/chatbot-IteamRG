@@ -89,31 +89,8 @@ function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
 	 if (text_ == "ITRGTX001") {
         messageData = {
-            attachment: {
-                "type": "template",
-                "payload": {
-                    "template_type": "button",
-                    "text": "Possuo as seguintes opções de Tarifas",
-                    "buttons": [
-                        {
-                            "type": "web_url",
-                            "url": "https://petersapparel.parseapp.com",
-                            "title": "Tarifas de embarque"
-                        },
-                        {
-                            "type": "web_url",
-                            "url": "https://petersapparel.parseapp.com",
-                            "title": "Tarifas de Conexão"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Outros Serviços",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }
-                    ]
-                }
-            }
-        }
+
+    }
     }else if(text_ == "ITRGAL001"){
 		 messageData = {
 			 attachment: {
@@ -125,38 +102,32 @@ function sendMessage(sender, text_) {
 		 }	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
-                    attachment:{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-					   {
-						"title":"Duvidas sobre Taxas",
-						"image_url":"https://gerencianet.com.br/wp-content/themes/Gerencianet/images/sprite_assinaturas.png",
-						"subtitle":"We\'ve got the right hat for everyone.",
-						"default_action": {
-						  "type": "web_url",
-						  "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-						  "messenger_extensions": true,
-						  "webview_height_ratio": "tall",
-						  "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-						}
-					   }//,
-						//{
-						//"title":"Duvidas sobre Estacionamento",
-						//"image_url":"https://lh5.ggpht.com/R2STdtOyafohMRRkRDwK5_tBCislCz8NQiz0OqZaiEzehr5ZMgquyUaeceZL683j3Wg=w300",
-						//"subtitle":"We\'ve got the right hat for everyone.",
-						//"default_action": {
-						 // "type": "web_url",
-						 // "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-						 // "messenger_extensions": true,
-						 // "webview_height_ratio": "tall",
-						 // "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-					//	}
-						//}	
-					]      
-          }
-     }
+                  attachment:{
+                        "type":"template",
+                        "payload":{
+                            "template_type":"generic",
+                            "elements":[
+                            {
+                                "title":"Taxas",
+                                "image_url":"https://gerencianet.com.br/wp-content/themes/Gerencianet/images/sprite_assinaturas.png",
+                                "subtitle":"Informações sobre Taxas",
+                                "default_action": {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/",
+                                "messenger_extensions": true,
+                                "webview_height_ratio": "tall",
+                                },
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/",
+                                    "title":"View Website"
+                                }              
+                                ]      
+                            }
+                            ]
+                        }
+                   }
     } 
     }else{
        messageData = { text: text_ } ; 
