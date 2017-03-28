@@ -108,7 +108,7 @@ function sendMessage(sender, text_) {
                             "template_type":"generic",
                             "elements":[
                             {
-                                "title":"Taxas",
+                                "title":"Ferrari",
                                 "image_url":"https://cdn1.vox-cdn.com/thumbor/-pG8Dcb_qtRf6te3ug12FHhqUDs=/1020x0/cdn0.vox-cdn.com/uploads/chorus_asset/file/4156848/Ferrari_F12tdf_3low.0.jpg",
                                 "subtitle":"Informações sobre Taxas",
                                 //"default_action": {
@@ -125,7 +125,7 @@ function sendMessage(sender, text_) {
                                 }              
                                 ]      
                             },{
-                             "title":"Taxas",
+                             "title":"Lamborghini",
                                 "image_url":"http://pictures.topspeed.com/IMG/crop/201603/2016-lamborghini-centenar-5_800x0w.jpg",
                                 "subtitle":"Meu Deus",
                                 //"default_action": {
@@ -138,6 +138,24 @@ function sendMessage(sender, text_) {
                                 {
                                     "type":"web_url",
                                     "url":"https://lamborghini.com",
+                                    "title":"View Website"
+                                }              
+                                ]    
+                            },
+                            {
+                             "title":"Porsche",
+                                "image_url":"http://bestcars.uol.com.br/bc/wp-content/uploads/2015/10/Porsche-Cayman-Black-Edition.jpg",
+                                "subtitle":"Meu Deus",
+                                //"default_action": {
+                                //"type": "web_url",
+                                //"url": "http://www.riogaleao.com/",
+                                //"messenger_extensions": true,
+                                //"webview_height_ratio": "tall",
+                                //}
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.porsche.com/",
                                     "title":"View Website"
                                 }              
                                 ]    
