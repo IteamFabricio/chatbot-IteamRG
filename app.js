@@ -109,18 +109,18 @@ function sendMessage(sender, text_) {
                             "elements":[
                             {
                                 "title":"Taxas",
-                                "image_url":"http://www.sevenminds.es/portugues/assets/img/misc/foto-tarifas-roi.jpg",
+                                "image_url":"https://cdn1.vox-cdn.com/thumbor/-pG8Dcb_qtRf6te3ug12FHhqUDs=/1020x0/cdn0.vox-cdn.com/uploads/chorus_asset/file/4156848/Ferrari_F12tdf_3low.0.jpg",
                                 "subtitle":"Informações sobre Taxas",
-                                "default_action": {
-                                "type": "web_url",
+                                //"default_action": {
+                                //"type": "web_url",
                                 //"url": "http://www.riogaleao.com/",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                },
+                                //"messenger_extensions": true,
+                                //"webview_height_ratio": "tall",
+                                //}
                                 "buttons":[
                                 {
                                     "type":"web_url",
-                                    //"url":"http://www.riogaleao.com/",
+                                    "url":"http://www.ferrari.com/en_en/",
                                     "title":"View Website"
                                 }              
                                 ]      
