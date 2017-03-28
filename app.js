@@ -123,8 +123,42 @@ function sendMessage(sender, text_) {
 			 }
 		    }
 		 }	
-	}else {
-			messageData = { text: text_ } ;
+	}else if(text_ == "ITRGES001"){
+			messageData = { 
+                    attachment:{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+   		   {				"title":"Duvidas sobre Taxas",
+						"image_url":"https://gerencianet.com.br/wp-content/themes/Gerencianet/images/sprite_assinaturas.png",
+						"subtitle":"We\'ve got the right hat for everyone.",
+						"default_action": {
+						  "type": "web_url",
+						  "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+						  "messenger_extensions": true,
+						  "webview_height_ratio": "tall",
+						  "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+		   }
+		   },
+		   {
+						"title":"Duvidas sobre Estacionamento",
+						"image_url":"https://lh5.ggpht.com/R2STdtOyafohMRRkRDwK5_tBCislCz8NQiz0OqZaiEzehr5ZMgquyUaeceZL683j3Wg=w300",
+						"subtitle":"We\'ve got the right hat for everyone.",
+						"default_action": {
+						  "type": "web_url",
+						  "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+						  "messenger_extensions": true,
+						  "webview_height_ratio": "tall",
+						  "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+						}
+						}	
+					]      
+                    }
+     }
+    } 
+    }else{
+       messageData = { text: text_ } ; 
     }
 	//messageData = {text: "opa" }; - Alteracao do parametro messageData de retorno para o Facebook
 
