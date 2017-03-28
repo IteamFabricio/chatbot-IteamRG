@@ -113,14 +113,14 @@ function sendMessage(sender, text_) {
                                 "subtitle":"Informações sobre Taxas",
                                 "default_action": {
                                 "type": "web_url",
-                                "url": "http://www.riogaleao.com/",
+                                //"url": "http://www.riogaleao.com/",
                                 "messenger_extensions": true,
                                 "webview_height_ratio": "tall",
                                 },
                                 "buttons":[
                                 {
                                     "type":"web_url",
-                                    "url":"http://www.riogaleao.com/",
+                                    //"url":"http://www.riogaleao.com/",
                                     "title":"View Website"
                                 }              
                                 ]      
