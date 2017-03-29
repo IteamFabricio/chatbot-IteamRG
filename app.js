@@ -94,6 +94,7 @@ function sendMessage(sender, text_) {
     }else if(text_ == "IT_LISTFASTFOOD"){
 		//Montando a lista de fast Food
          messageData = {
+             attachment:{
                         "type":"template",
                         "payload":{
                             "template_type":"generic",
@@ -135,6 +136,7 @@ function sendMessage(sender, text_) {
                             }
                             ]
                         }
+             }             
         }	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
