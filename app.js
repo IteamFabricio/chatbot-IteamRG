@@ -85,7 +85,7 @@ function callWatson(payload, sender) {
     });
 }
 function RespostaPadrao() {
-    sendMessage(sender,"Posso lhe auxiliar em algo mais?");
+    sendMessage(sender,"Caso não tenha encontrado o retaurante ou lanchonete a lista, acesse o link http://www.riogaleao.com/places-categories/alimentacao/ para mais opções. Posso lhe auxiliar em algo mais?");
 }
 
 
@@ -144,7 +144,8 @@ function sendMessage(sender, text_) {
              }             
         }
     setTimeout(RespostaPadrao, 6000);   	
-	}else if(text_ == "ITRGES001"){
+	//Fim validação do fastFood
+   }else if(text_ == "ITRGES001"){
 			messageData = { 
                   attachment:{
                         "type":"template",
@@ -223,8 +224,58 @@ function sendMessage(sender, text_) {
                         }
                    }
     } 
+    }else if(text_ == "IT_LISTFASELFSERVICE"){
+     
+        sendMessage(sender,"Possuo algumas destas opções de Self Serviçe:");
+		//Montando a lista de Self Serviçe
+         messageData = {
+             attachment:{
+                        "type":"template",
+                        "payload":{
+                            "template_type":"generic",
+                            "elements":[
+                            {
+                                "title":"Restaurantes",
+                                "image_url":"http://i.imgur.com/I151KIH.png",
+                                "subtitle":"Divino Fogão",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }            
+                                ]      
+                            },{
+                             "title":"Restaurantes",
+                                "image_url":"http://i.imgur.com/bY7kUCk.png",
+                                "subtitle":"Demoiselle",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }                
+                                ]    
+                            },
+                            {
+                             "title":"Restaurantes",
+                                "image_url":"http://i.imgur.com/7TUovGo.png",
+                                "subtitle":"Delírio Tropical",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }
+                                ]    
+                            }
+                            ]
+                        }
+             }             
+        }
+    setTimeout(RespostaPadrao, 6000);   
     }else{
-       messageData = { text: text_ } ; 
+        messageData = { text: text_ } ;
     }
 	//messageData = {text: "opa" }; - Alteracao do parametro messageData de retorno para o Facebook
 
