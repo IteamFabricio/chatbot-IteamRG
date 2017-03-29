@@ -84,6 +84,10 @@ function callWatson(payload, sender) {
             
     });
 }
+function RespostaPadrao() {
+    sendMessage(sender,"Posso lhe auxiliar em algo mais?");
+}
+
 
 function sendMessage(sender, text_) {
 	text_ = text_.substring(0, 319);
@@ -139,7 +143,7 @@ function sendMessage(sender, text_) {
                         }
              }             
         }
-       	
+    setTimeout(RespostaPadrao, 6000);   	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
                   attachment:{
