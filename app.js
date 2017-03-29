@@ -101,7 +101,7 @@ function sendMessage(sender, text_) {
                             "elements":[
                             {
                                 "title":"Fast Food",
-                                "image_url":"http://vignette1.wikia.nocookie.net/logopedia/images/a/ae/Bobslogo2002.png",
+                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/Bobs_logo.png",
                                 "subtitle":"Bobs RioGaleao",
                                 "buttons":[
                                 {
@@ -112,7 +112,7 @@ function sendMessage(sender, text_) {
                                 ]      
                             },{
                              "title":"Fast Food",
-                                "image_url":"http://vignette2.wikia.nocookie.net/logopedia/images/e/eb/Subway_new_logo.png",
+                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/Subway_logo.png",
                                 "subtitle":"Subway",
                                 "buttons":[
                                 {
@@ -124,7 +124,7 @@ function sendMessage(sender, text_) {
                             },
                             {
                              "title":"Fast Food",
-                                "image_url":"http://diylogodesigns.com/blog/wp-content/uploads/2016/04/Mcdonalds-logo-png-Transparent.png",
+                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/MCDonalds_logo.png",
                                 "subtitle":"MCDonalds",
                                 "buttons":[
                                 {
