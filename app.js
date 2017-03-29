@@ -92,7 +92,7 @@ function sendMessage(sender, text_) {
 
     }
 }else if(text_ == "IT_LISTFASTFOOD"){
-        sendMessage(sender,"Possuo a seguinte lista");
+        sendMessage(sender,"Possuo algumas destas opções de Fast Food:");
 		//Montando a lista de fast Food
          messageData = {
              attachment:{
@@ -102,7 +102,7 @@ function sendMessage(sender, text_) {
                             "elements":[
                             {
                                 "title":"Fast Food",
-                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/Bobs_logo.png",
+                                "image_url":"http://i.imgur.com/aMuP7CL.png",
                                 "subtitle":"Bobs RioGaleao",
                                 "buttons":[
                                 {
@@ -113,7 +113,7 @@ function sendMessage(sender, text_) {
                                 ]      
                             },{
                              "title":"Fast Food",
-                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/Subway_logo.png",
+                                "image_url":"http://i.imgur.com/eFs5bzx.png",
                                 "subtitle":"Subway",
                                 "buttons":[
                                 {
@@ -125,7 +125,7 @@ function sendMessage(sender, text_) {
                             },
                             {
                              "title":"Fast Food",
-                                "image_url":"https://github.com/IteamFabricio/IteamRG/blob/ece3cfca8848c0db95137f9f5241a59642e41b35/MCDonalds_logo.png",
+                                "image_url":"http://i.imgur.com/2Q39uEd.png",
                                 "subtitle":"MCDonalds",
                                 "buttons":[
                                 {
@@ -138,7 +138,8 @@ function sendMessage(sender, text_) {
                             ]
                         }
              }             
-        }	
+        }
+    sendMessage(sender,"Posso lhe auxiliar com mais alguma informação?");    	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
                   attachment:{
