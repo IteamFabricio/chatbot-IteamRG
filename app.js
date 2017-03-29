@@ -91,7 +91,8 @@ function sendMessage(sender, text_) {
         messageData = {
 
     }
-    }else if(text_ == "IT_LISTFASTFOOD"){
+}else if(text_ == "IT_LISTFASTFOOD"){
+        sendMessage(sender,"Possuo a seguinte lista");
 		//Montando a lista de fast Food
          messageData = {
              attachment:{
@@ -237,6 +238,7 @@ function sendMessage(sender, text_) {
             console.log('Error: ', response.body.error);
         }
     });
+
 };
 
 var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD";
