@@ -91,15 +91,51 @@ function sendMessage(sender, text_) {
         messageData = {
 
     }
-    }else if(text_ == "ITRGAL001"){
-		 messageData = {
-			 attachment: {
-			 "type":"image",
-			 "payload":{
-             "url":"http://3.bp.blogspot.com/-FRNL-lbo584/Tr60J_7hWhI/AAAAAAAAB-8/BPjBNj7fOCY/s1600/fastfood.png"	 
-			 }
-		    }
-		 }	
+    }else if(text_ == "IT_LISTFASTFOOD"){
+		//Montando a lista de fast Food
+         messageData = {
+                        "type":"template",
+                        "payload":{
+                            "template_type":"generic",
+                            "elements":[
+                            {
+                                "title":"Fast Food",
+                                "image_url":"http://vignette1.wikia.nocookie.net/logopedia/images/a/ae/Bobslogo2002.png",
+                                "subtitle":"Bobs RioGaleao",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }            
+                                ]      
+                            },{
+                             "title":"Fast Food",
+                                "image_url":"http://vignette2.wikia.nocookie.net/logopedia/images/e/eb/Subway_new_logo.png",
+                                "subtitle":"Subway",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }                
+                                ]    
+                            },
+                            {
+                             "title":"Fast Food",
+                                "image_url":"http://diylogodesigns.com/blog/wp-content/uploads/2016/04/Mcdonalds-logo-png-Transparent.png",
+                                "subtitle":"MCDonalds",
+                                "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://www.riogaleao.com/places-categories/alimentacao/",
+                                    "title":"Guia Aeroporto Alimentação"
+                                }
+                                ]    
+                            }
+                            ]
+                        }
+        }	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
                   attachment:{
