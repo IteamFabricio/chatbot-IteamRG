@@ -139,7 +139,7 @@ function sendMessage(sender, text_) {
                         }
              }             
         }
-    sendMessage(sender,"Posso lhe auxiliar com mais alguma informação?");    	
+       	
 	}else if(text_ == "ITRGES001"){
 			messageData = { 
                   attachment:{
