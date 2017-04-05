@@ -73,7 +73,7 @@ function callWatson(payload, sender) {
         var entities = convResults.entities;
         if (intents && intents[0].intent == 'Cumprimentos') {
             var i = 0;
-	        sendMessage(sender, text_);
+	        sendMessage(sender, convResults.output.text[0]);
             while (i < convResults.output.text.length)
                 setTimeOut(sendMessageInitial,2000,sender, convResults.output.text[i++]);
         }
