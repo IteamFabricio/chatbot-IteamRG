@@ -75,7 +75,7 @@ function callWatson(payload, sender) {
             var i = 0;
 	        sendMessage(sender, text_);
             while (i < convResults.output.text.length)
-                setTimeOut(sendMessageInitial(sender, convResults.output.text[i++]),2000);
+                setTimeOut(sendMessageInitial,2000,sender, convResults.output.text[i++]);
         }
         else {
             if (err) {
@@ -139,7 +139,7 @@ function sendMessageInitial(sender, text_) {
 			}
 		}
 	}
-	setTimeout(RespostaPadrao, 5000);
+	//setTimeout(RespostaPadrao, 5000);
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: { access_token: token },
