@@ -75,7 +75,7 @@ function callWatson(payload, sender) {
             var i = 0;
 	        sendMessage(sender, convResults.output.text[0]);
             while (i < convResults.output.text.length)
-                setTimeOut(sendMessageInitial,2000,sender, convResults.output.text[i++]);
+                setTimeout(sendMessageInitial,2000,sender, convResults.output.text[i++]);
         }
         else {
             if (err) {
