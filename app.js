@@ -73,8 +73,9 @@ function callWatson(payload, sender) {
         var entities = convResults.entities;
         if (intents && intents[0].intent == 'Cumprimentos') {
             var i = 0;
+	        sendMessage(sender, text_);
             while (i < convResults.output.text.length)
-                sendMessageInitial(sender, convResults.output.text[i++]);
+                setTimeOut(sendMessageInitial(sender, convResults.output.text[i++]),2000);
         }
         else {
             if (err) {
@@ -93,7 +94,6 @@ function callWatson(payload, sender) {
     });
 }
 function sendMessageInitial(sender, text_) {
-	sendMessage(sender, text_);
 	messageData = {
 		attachment: {
 			"type": "template",
