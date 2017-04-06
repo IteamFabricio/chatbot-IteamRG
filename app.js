@@ -89,6 +89,12 @@ function callWatson(payload, sender) {
         } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
+        }else if (intents && intents[0].intent == 'In_Alimentação') {
+            var i = 0;
+            categoriaestabelcimento(sender, convResults.output.text[0]);
+        }else if (nodeVisited && nodeVisited == 'NodeFastFood') {
+            var i = 0;
+            geralistFastfood(sender, convResults.output.text[0]);
         }
         else {
             if (err) {
@@ -106,6 +112,79 @@ function callWatson(payload, sender) {
         }
     });
 }
+function geralistFastfood(sender,text_){
+    messageData = {
+        attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "McDonald's",
+                        "image_url": "http://i.imgur.com/2Q39uEd.png",
+                        "subtitle": "Terminal 2, 2º Andar /n Área restrita doméstico /n 06:00 às 23:00",
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=3071_6231",
+                                "title": "Veja no Mapa"
+                            }
+                        ]
+                    }, {
+                        "title": "Spoleto",
+                        "image_url": "http://i.imgur.com/GHAjDsr.png",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino /n Área pública n/ 06:00 às 00:00",
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=1481_1471",
+                                "title": "Veja no Mapa"
+                            }                 
+                        ]
+                    },
+                    {
+                        "title": "Subway",
+                        "image_url": "http://i.imgur.com/eFs5bzx.png",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino! /n Área pública/Área restrita internacional/Área restrita doméstico /n 06:00 às 23:00",
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_2431",
+                                "title": "Aérea Publica Mapa"
+                            },
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_10611",
+                                "title": "Aérea internacional Mapa"
+                            },
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_11111",
+                                "title": "Aérea Domestica Mapa"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+    //setTimeout(RespostaPadrao, 5000);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
 function sendOptionsVoo(sender, text_) {
     messageData = {
         attachment: {
@@ -150,6 +229,56 @@ function sendOptionsVoo(sender, text_) {
     });
 }
 
+function categoriaestabelcimento(sender, text_) {
+    messageData = {
+            attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Escolha a opção:",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Fast Food",
+                        "payload": "fastfood"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Self Service",
+                        "payload": "selfservice"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Lanchonete & Café",
+                        "payload": "lanchonete"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Bombonieres & Sobremesas",
+                        "payload": "bombonieres"
+                    }
+                ]
+            }
+        }
+    }
+    //setTimeout(RespostaPadrao, 5000);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 function sendMessageInitial(sender, text_) {
     messageData = {
         attachment: {
@@ -180,7 +309,7 @@ function sendMessageInitial(sender, text_) {
                             },
                             {
                                 "type": "postback",
-                                "payload": "Consultar Estabelecimentos",
+                                "payload": "consultar estabelecimentos",
                                 "title": "Consultar"
                             }
                         ]
@@ -236,28 +365,29 @@ function pesquisaVoo(sender, flightNumber) {
             "type": "template",
             "payload": {
                 "template_type": "airline_update",
-                "intro_message": "Your flight is delayed",
+                "intro_message": "Segue os dados do seu vôo",
                 "update_type": "delay",
-                "locale": "en_US",
+               // "update_type": "confirmed",
+                "locale": "pt_BR",
                 "pnr_number": "CF23G2",
                 "update_flight_info": {
                     "flight_number": flightNumber,
                     "departure_airport": {
-                        "airport_code": "SFO",
-                        "city": "San Francisco",
+                        "airport_code": "GIG",
+                        "city": "Rio de Janeiro",
                         "terminal": "T4",
                         "gate": "G8"
                     },
                     "arrival_airport": {
-                        "airport_code": "AMS",
-                        "city": "Amsterdam",
+                        "airport_code": "CNF",
+                        "city": "Confins",
                         "terminal": "T4",
                         "gate": "G8"
                     },
                     "flight_schedule": {
-                        "boarding_time": "2015-12-26T10:30",
-                        "departure_time": "2015-12-26T11:30",
-                        "arrival_time": "2015-12-27T07:30"
+                        "boarding_time": "2017-04-26T10:30",
+                        "departure_time": "2017-04-26T11:30",
+                        "arrival_time": "2017-04-27T07:30"
                     }
                 }
             }
