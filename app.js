@@ -60,7 +60,12 @@ app.post('/webhook/', function (req, res) {
                 payload.context = params.context;
             }
         }
-        callWatson(payload, sender);
+        if (text == 'IT_2131231') {
+            askForFlight();
+        } else if (text = 'IT_12312331') {
+            askForDateofFlight();
+        } else
+            callWatson(payload, sender);
     }
     res.sendStatus(200);
 });
@@ -73,9 +78,17 @@ function callWatson(payload, sender) {
         var entities = convResults.entities;
         if (intents && intents[0].intent == 'Cumprimentos') {
             var i = 0;
-	        sendMessage(sender, convResults.output.text[0]);
+            sendMessage(sender, convResults.output.text[0]);
             while (i < convResults.output.text.length)
-                setTimeout(sendMessageInitial,2000,sender, convResults.output.text[i++]);
+                setTimeout(sendMessageInitial, 2000, sender, convResults.output.text[i++]);
+        } else if (intents && intents[0].intent == 'In_voo') {
+            var i = 0;
+            sendMessage(sender, convResults.output.text[0]);
+            while (i < convResults.output.text.length)
+                setTimeout(sendOptionsVoo, 2000, sender, convResults.output.text[i++]);
+        } else if (intents && intents[0].intent == 'GetNumVoo') {
+            var i = 0;
+            pesquisaVoo(sender, convResults.output.text[0]);
         }
         else {
             if (err) {
@@ -93,69 +106,166 @@ function callWatson(payload, sender) {
         }
     });
 }
+function sendOptionsVoo(sender, text_) {
+    messageData = {
+        attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Escolha a opção:",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Número do Vôo",
+                        "payload": "numero do voo"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Data do Vôo",
+                        "payload": "data do voo"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Cia Aérea",
+                        "payload": "cia area"
+                    }
+                ]
+            }
+        }
+    }
+}
+
 function sendMessageInitial(sender, text_) {
-	messageData = {
-		attachment: {
-			"type": "template",
-			"payload": {
-				"template_type": "generic",
-				"elements": [
-					{
-						"title": "Plano Corporativo - Mobilidade e Infra",
-						"image_url": "http://i.imgur.com/azFIsJG.png",
-						"subtitle": "Mobilidade e Infraestrutura",
-						"buttons": [
-							{
-								"type": "web_url",
-								"url": "https://algartelecom.com.br/medias-grandes-empresas/",
-								"title": "Plano Mobilidade e Infra"
-							}
-						]
-					}, {
-						"title": "Plano Corporativo - Infraestrutura",
-						"image_url": "http://i.imgur.com/5oDtZPw.png",
-						"subtitle": "Infraestrutura",
-						"buttons": [
-							{
-								"type": "web_url",
-								"url": "https://algartelecom.com.br/medias-grandes-empresas/",
-								"title": "Plano Infraestrutura"
-							}
-						]
-					},
-					{
-						"title": "Plano Corporativo - Mobilidade",
-						"image_url": "http://i.imgur.com/9RIhjYe.png",
-						"subtitle": "Mobilidade",
-						"buttons": [
-							{
-								"type": "web_url",
-								"url": "https://algartelecom.com.br/medias-grandes-empresas/",
-								"title": "Plano Mobilidade"
-							}
-						]
-					}
-				]
-			}
-		}
-	}
-	//setTimeout(RespostaPadrao, 5000);
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: { access_token: token },
-		method: 'POST',
-		json: {
-			recipient: { id: sender },
-			message: messageData,
-		}
-	}, function (error, response, body) {
-		if (error) {
-			console.log('Error sending message: ', error);
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error);
-		}
-	});
+    messageData = {
+        attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Consultar Vôo",
+                        "image_url": "http://i.imgur.com/azFIsJG.png",
+                        "subtitle": "Consulte seus voos por número, data ou cia aérea",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "Consultar Vôo",
+                                "title": "Consultar"
+                            }
+                        ]
+                    }, {
+                        "title": "Estabelecimentos",
+                        "image_url": "http://i.imgur.com/5oDtZPw.png",
+                        "subtitle": "Veja detalhes e localização dos estabelecimentos no RIOgaleão",
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "https://algartelecom.com.br/medias-grandes-empresas/",
+                                "title": "Link Estabelecimentos"
+                            },
+                            {
+                                "type": "postback",
+                                "payload": "Consultar Estabelecimentos",
+                                "title": "Consultar"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Promoções",
+                        "image_url": "http://i.imgur.com/9RIhjYe.png",
+                        "subtitle": "Não perca as promoções do RIOgaleão!",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "Consultar Promoções",
+                                "title": "Consultar"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Reporte um problema",
+                        "image_url": "http://i.imgur.com/9RIhjYe.png",
+                        "subtitle": "Nos ajude a fazer um RIOgaleão ainda melhor!",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "Reportar Problema",
+                                "title": "Reportar"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+    //setTimeout(RespostaPadrao, 5000);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
 };
+function pesquisaVoo(sender,flightNumber) {
+    messageData = {
+        attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "airline_update",
+                "intro_message": "Your flight is delayed",
+                "update_type": "delay",
+                "locale": "en_US",
+                "pnr_number": "CF23G2",
+                "update_flight_info": {
+                    "flight_number": flightNumber,
+                    "departure_airport": {
+                        "airport_code": "SFO",
+                        "city": "San Francisco",
+                        "terminal": "T4",
+                        "gate": "G8"
+                    },
+                    "arrival_airport": {
+                        "airport_code": "AMS",
+                        "city": "Amsterdam",
+                        "terminal": "T4",
+                        "gate": "G8"
+                    },
+                    "flight_schedule": {
+                        "boarding_time": "2015-12-26T10:30",
+                        "departure_time": "2015-12-26T11:30",
+                        "arrival_time": "2015-12-27T07:30"
+                    }
+                }
+            }
+        }
+
+    }
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+}
 function RespostaPadrao() {
     sendMessage(sender, "Caso não tenha encontrado o retaurante ou lanchonete a lista, acesse o link http://www.riogaleao.com/places-categories/alimentacao/ para mais opções. Posso lhe auxiliar em algo mais?");
 }
@@ -167,185 +277,6 @@ function sendMessage(sender, text_) {
         messageData = {
 
         }
-    } else if (text_ == "IT_LISTFASTFOOD") {
-        sendMessage(sender, "Possuo algumas destas opções de Fast Food:");
-        //Montando a lista de fast Food
-        messageData = {
-            attachment: {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Fast Food",
-                            "image_url": "http://i.imgur.com/aMuP7CL.png",
-                            "subtitle": "Bobs RioGaleao",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        }, {
-                            "title": "Fast Food",
-                            "image_url": "http://i.imgur.com/eFs5bzx.png",
-                            "subtitle": "Subway",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Fast Food",
-                            "image_url": "http://i.imgur.com/2Q39uEd.png",
-                            "subtitle": "MCDonalds",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-        setTimeout(RespostaPadrao, 6000);
-        //Fim validação do fastFood
-    } else if (text_ == "ITRGES001") {
-        messageData = {
-            attachment: {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Tarifas",
-                            "image_url": "https://www.clinks.com.br/wp-content/uploads/2013/05/anunciar-passagens-aereas-rede-display.png",
-                            "subtitle": "Informações sobre Tarifas",
-                            //"default_action": {
-                            //"type": "web_url",
-                            //"url": "http://www.riogaleao.com/",
-                            //"messenger_extensions": true,
-                            //"webview_height_ratio": "tall",
-                            //}
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/institucional/tarifas/",
-                                    "title": "Abrir Website"
-                                },
-                                {
-                                    "type": "postback",
-                                    "payload": "IT_TAXAS_TARIFAS",
-                                    "title": "Duvidas Tarifas"
-                                }
-                            ]
-                        }, {
-                            "title": "Estacionamento",
-                            "image_url": "http://www.hotelalecrimcaxias.com.br/images/touch-icon-windowsphone.png",
-                            "subtitle": "Preços e Informações",
-                            //"default_action": {
-                            //"type": "web_url",
-                            //"url": "http://www.riogaleao.com/",
-                            //"messenger_extensions": true,
-                            //"webview_height_ratio": "tall",
-                            //}
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/transportes-e-estacionamento/estacionamento/",
-                                    "title": "Estacionamento Website"
-                                },
-                                {
-                                    "type": "postback",
-                                    "payload": "IT_TAXAS_ESTACIONAMENTO",
-                                    "title": "Duvidas Estacionamento"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Companhias Aéreas",
-                            "image_url": "http://icon-icons.com/icons2/290/PNG/512/flight_30822.png",
-                            "subtitle": "Duvidas Sobre Cia Aéreas",
-                            //"default_action": {
-                            //"type": "web_url",
-                            //"url": "http://www.riogaleao.com/",
-                            //"messenger_extensions": true,
-                            //"webview_height_ratio": "tall",
-                            //}
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/companhias-aereas/",
-                                    "title": "Cia Aéreas Website"
-                                },
-                                {
-                                    "type": "postback",
-                                    "payload": "IT_TAXAS_CIAAREA",
-                                    "title": "Duvidas Cia Aéreas"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-    } else if (text_ == "IT_LISTFASELFSERVICE") {
-
-        sendMessage(sender, "Possuo algumas destas opções de Self Serviçe:");
-        //Montando a lista de Self Serviçe
-        messageData = {
-            attachment: {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Restaurantes",
-                            "image_url": "http://i.imgur.com/I151KIH.png",
-                            "subtitle": "Divino Fogão",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        }, {
-                            "title": "Restaurantes",
-                            "image_url": "http://i.imgur.com/bY7kUCk.png",
-                            "subtitle": "Demoiselle",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Restaurantes",
-                            "image_url": "http://i.imgur.com/7TUovGo.png",
-                            "subtitle": "Delírio Tropical",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "http://www.riogaleao.com/places-categories/alimentacao/",
-                                    "title": "Guia Aeroporto Alimentação"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-        setTimeout(RespostaPadrao, 6000);
     } else {
         messageData = { text: text_ };
     }
