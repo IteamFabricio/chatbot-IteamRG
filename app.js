@@ -60,7 +60,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (params.context) {
                 payload.context = params.context;
-            }        
+            }
         }
         console.log('Opa #3');
         callWatson(payload, sender);
@@ -74,6 +74,8 @@ function callWatson(payload, sender) {
         contid = convResults.context;
         var intents = convResults.intents;
         var entities = convResults.entities;
+        var nodeVisited = convResults.output.nodes_visited[0];
+        console.log("Node Visited: "+nodeVisited);
         if (intents && intents[0].intent == 'Cumprimentos') {
             var i = 0;
             sendMessage(sender, convResults.output.text[0]);
@@ -84,7 +86,7 @@ function callWatson(payload, sender) {
             sendMessage(sender, convResults.output.text[0]);
             while (i < convResults.output.text.length)
                 setTimeout(sendOptionsVoo, 2000, sender, convResults.output.text[i++]);
-        } else if (intents && intents[0].intent == 'GetNumVoo') {
+        } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
         }
@@ -131,6 +133,21 @@ function sendOptionsVoo(sender, text_) {
             }
         }
     }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
 }
 
 function sendMessageInitial(sender, text_) {
@@ -213,7 +230,7 @@ function sendMessageInitial(sender, text_) {
         }
     });
 };
-function pesquisaVoo(sender,flightNumber) {
+function pesquisaVoo(sender, flightNumber) {
     messageData = {
         attachment: {
             "type": "template",
