@@ -58,12 +58,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (params.context) {
                 payload.context = params.context;
-            }
-        }
-        if (text == 'IT_2131231') {
-            askForFlight();
-        } else if (text = 'IT_12312331') {
-            askForDateofFlight();
+            }        
         } else
             callWatson(payload, sender);
     }
