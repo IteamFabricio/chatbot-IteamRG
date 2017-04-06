@@ -251,11 +251,6 @@ function categoriaestabelcimento(sender, text_) {
                         "type": "postback",
                         "title": "Lanchonete & Café",
                         "payload": "lanchonete"
-                    },
-                    {
-                        "type": "postback",
-                        "title": "Bombonieres & Sobremesas",
-                        "payload": "bombonieres"
                     }
                 ]
             }
