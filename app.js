@@ -26,6 +26,7 @@ app.get('/webhook/', function (req, res) {
 });
 
 app.post('/webhook/', function (req, res) {
+    console.log('Opa #1');
     var text = null;
 
     messaging_events = req.body.entry[0].messaging;
@@ -51,6 +52,7 @@ app.post('/webhook/', function (req, res) {
             workspace_id: "5b821e1f-07b7-4525-b89b-7dad3deeb1e1"
         };
 
+        console.log('Opa #2');
         if (params) {
             if (params.input) {
                 params.input = params.input.replace("\n", "");
@@ -60,6 +62,7 @@ app.post('/webhook/', function (req, res) {
                 payload.context = params.context;
             }        
         }
+        console.log('Opa #3');
         callWatson(payload, sender);
     }
     res.sendStatus(200);
