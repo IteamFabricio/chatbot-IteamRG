@@ -59,8 +59,8 @@ app.post('/webhook/', function (req, res) {
             if (params.context) {
                 payload.context = params.context;
             }        
-        } else
-            callWatson(payload, sender);
+        }
+        callWatson(payload, sender);
     }
     res.sendStatus(200);
 });
