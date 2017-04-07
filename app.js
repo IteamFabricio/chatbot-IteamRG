@@ -89,7 +89,7 @@ function callWatson(payload, sender) {
         } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
-        }else if (intents && intents[0].intent == 'In_Alimentação') {
+        }else if (nodeVisited && nodeVisited == 'Estabelecimento') {
             var i = 0;
             categoriaestabelcimento(sender, convResults.output.text[0]);
         }else if (nodeVisited && nodeVisited == 'NodeFastFood') {
@@ -230,6 +230,81 @@ function sendOptionsVoo(sender, text_) {
 }
 
 function categoriaestabelcimento(sender, text_) {
+    messageData = {
+            attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Alimentação",
+                        "image_url": "http://i.imgur.com/T4FIlQx.png",//Link para Imagens
+                        "subtitle": "Os melhores Fast Food estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "catAlimentacao",
+                                "title": "Consultar"
+                            }
+                        ]
+                    }, {
+                        "title": "Lojas",
+                        "image_url": "http://i.imgur.com/rVtw41E.png",//Link para Imagens
+                        "subtitle": "Os melhores Serlf Services estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "catLojas",
+                                "title": "Consultar"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Companhias Aéreas",
+                        "image_url": "http://i.imgur.com/ov97kSb.png",//Link para Imagens 
+                        "subtitle": "As melhores lanchonetes estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "catCiaarea",
+                                "title": "Consultar"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Serviços",
+                        "image_url": "http://i.imgur.com/NVe5PJ2.png",//link para imagens 
+                        "subtitle": "As melhores marcas de conveniencias e Bombonieres estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "catServicos",
+                                "title": "Consultar"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+    //setTimeout(RespostaPadrao, 5000);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+function categoriaAlimentacao(sender, text_) {
     messageData = {
             attachment: {
             "type": "template",
