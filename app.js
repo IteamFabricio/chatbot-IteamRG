@@ -234,23 +234,54 @@ function categoriaestabelcimento(sender, text_) {
             attachment: {
             "type": "template",
             "payload": {
-                "template_type": "button",
-                "text": "Escolha a opção:",
-                "buttons": [
+                "template_type": "generic",
+                "elements": [
                     {
-                        "type": "postback",
                         "title": "Fast Food",
-                        "payload": "fastfood"
-                    },
-                    {
-                        "type": "postback",
+                        "image_url": "http://i.imgur.com/iXusrWP.jpg",//Link para Imageng FastFood
+                        "subtitle": "Os melhores Fast Food estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "fastfood",
+                                "title": "Consultar"
+                            }
+                        ]
+                    }, {
                         "title": "Self Service",
-                        "payload": "selfservice"
+                        "image_url": "http://i.imgur.com/Uyg3lli.jpg",//Link para Imagens Self Service
+                        "subtitle": "Os melhores Serlf Services estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "selfservice",
+                                "title": "Consultar"
+                            }
+                        ]
                     },
                     {
-                        "type": "postback",
                         "title": "Lanchonete & Café",
-                        "payload": "lanchonete"
+                        "image_url": "http://i.imgur.com/wPNKHRB.jpg",//Link para Imagens Lanchonete
+                        "subtitle": "As melhores lanchonetes estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "lanchonetecafe",
+                                "title": "Consultar"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Bomboniere",
+                        "image_url": "http://i.imgur.com/cqPTmSz.jpg",//link para imagens Bomboniere
+                        "subtitle": "As melhores marcas de conveniencias e Bombonieres estão aqui.",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "payload": "Bomboniere",
+                                "title": "Consultar"
+                            }
+                        ]
                     }
                 ]
             }
@@ -283,7 +314,7 @@ function sendMessageInitial(sender, text_) {
                 "elements": [
                     {
                         "title": "Consultar Vôo",
-                        "image_url": "http://i.imgur.com/azFIsJG.png",
+                        "image_url": "http://i.imgur.com/q3p5UxM.png",
                         "subtitle": "Consulte seus voos por número, data ou cia aérea",
                         "buttons": [
                             {
@@ -294,13 +325,13 @@ function sendMessageInitial(sender, text_) {
                         ]
                     }, {
                         "title": "Estabelecimentos",
-                        "image_url": "http://i.imgur.com/5oDtZPw.png",
+                        "image_url": "http://i.imgur.com/ce8LUat.png",
                         "subtitle": "Veja detalhes e localização dos estabelecimentos no RIOgaleão",
                         "buttons": [
                             {
                                 "type": "web_url",
                                 "url": "https://algartelecom.com.br/medias-grandes-empresas/",
-                                "title": "Link Estabelecimentos"
+                                "title": "Veja no Site"
                             },
                             {
                                 "type": "postback",
@@ -311,7 +342,7 @@ function sendMessageInitial(sender, text_) {
                     },
                     {
                         "title": "Promoções",
-                        "image_url": "http://i.imgur.com/9RIhjYe.png",
+                        "image_url": "http://i.imgur.com/lNrjpUg.png",
                         "subtitle": "Não perca as promoções do RIOgaleão!",
                         "buttons": [
                             {
@@ -323,7 +354,7 @@ function sendMessageInitial(sender, text_) {
                     },
                     {
                         "title": "Reporte um problema",
-                        "image_url": "http://i.imgur.com/9RIhjYe.png",
+                        "image_url": "http://i.imgur.com/1ZQTksv.png",
                         "subtitle": "Nos ajude a fazer um RIOgaleão ainda melhor!",
                         "buttons": [
                             {
