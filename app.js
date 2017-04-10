@@ -131,7 +131,7 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "McDonald's",
                         "image_url": "http://i.imgur.com/2Q39uEd.png",
-                        "subtitle": "Terminal 2, 2º Andar /n Área restrita doméstico /n 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 2º Andar <br>Área restrita doméstico<br> 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -142,7 +142,7 @@ function geralistFastfood(sender,text_){
                     }, {
                         "title": "Spoleto",
                         "image_url": "http://i.imgur.com/GHAjDsr.png",
-                        "subtitle": "Terminal 2, 1º Andar - Mezanino /n Área pública n/ 06:00 às 00:00",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino <br>Área pública <br>06:00 às 00:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -154,22 +154,22 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "Subway",
                         "image_url": "http://i.imgur.com/eFs5bzx.png",
-                        "subtitle": "Terminal 2, 1º Andar - Mezanino! /n Área pública/Área restrita internacional/Área restrita doméstico /n 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino! <br>Área pública/Área restrita internacional/Área restrita doméstico<br> 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
                                 "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_2431",
-                                "title": "Aérea Publica Mapa"
+                                "title": "Mapa Publica"
                             },
                             {
                                 "type": "web_url",
                                 "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_10611",
-                                "title": "Aérea internacional Mapa"
+                                "title": "Mapa internacional"
                             },
                             {
                                 "type": "web_url",
                                 "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=2441_11111",
-                                "title": "Aérea Domestica Mapa"
+                                "title": "Mapa Domestica"
                             }
                         ]
                     }
