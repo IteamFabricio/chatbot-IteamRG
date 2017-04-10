@@ -74,7 +74,8 @@ function callWatson(payload, sender) {
         contid = convResults.context;
         var intents = convResults.intents;
         var entities = convResults.entities;
-        var nodeVisited = convResults.output.nodes_visited[0];
+        if(convResults.output.nodes_visited)
+            var nodeVisited = convResults.output.nodes_visited[0];
         console.log("Node Visited: "+nodeVisited);
         if (intents && intents[0].intent == 'Cumprimentos') {
             var i = 0;
@@ -247,7 +248,7 @@ function categoriaestabelcimento(sender, text_) {
                     {
                         "title": "Alimentação",
                         "image_url": "http://i.imgur.com/T4FIlQx.png",//Link para Imagens
-                        "subtitle": "Os melhores Fast Food estão aqui.",
+                        "subtitle": "As mais variades de aliemtação voce encontra aqui.",
                         "buttons": [
                             {
                                 "type": "postback",
@@ -326,7 +327,7 @@ function categoriaAlimentacao(sender, text_) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "payload": "fastfood",
+                                "payload": "cadfastfood",
                                 "title": "Consultar"
                             }
                         ]
@@ -337,7 +338,7 @@ function categoriaAlimentacao(sender, text_) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "payload": "selfservice",
+                                "payload": "cadselfservice",
                                 "title": "Consultar"
                             }
                         ]
@@ -349,7 +350,7 @@ function categoriaAlimentacao(sender, text_) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "payload": "lanchonetecafe",
+                                "payload": "cadlanchonetecafe",
                                 "title": "Consultar"
                             }
                         ]
@@ -361,7 +362,7 @@ function categoriaAlimentacao(sender, text_) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "payload": "Bomboniere",
+                                "payload": "cadbomboniere",
                                 "title": "Consultar"
                             }
                         ]
