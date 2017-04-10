@@ -90,13 +90,21 @@ function callWatson(payload, sender) {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
         }else if (nodeVisited && nodeVisited == 'Estabelecimento') {
+            sendMessage(sender, convResults.output.text[0]);
             var i = 0;
-            categoriaestabelcimento(sender, convResults.output.text[0]);
+            while (i < convResults.output.text.length)
+            setTimeout(categoriaestabelcimento,2000,sender, convResults.output.text[i++]);
         }else if (nodeVisited && nodeVisited == 'Cat_Estabelecimento') {
+            sendMessage(sender, convResults.output.text[0]);
             var i = 0;
-            categoriaAlimentacao(sender, convResults.output.text[0]);
-        }
-        else {
+            while (i < convResults.output.text.length)
+                setTimeout(categoriaAlimentacao,2000,sender, convResults.output.text[i++]);
+        }else if (nodeVisited && nodeVisited == 'NodeFastFood') {
+            sendMessage(sender, convResults.output.text[0]);
+            var i = 0;
+            while (i < convResults.output.text.length)
+                setTimeout(geralistFastfood,2000,sender, convResults.output.text[i++]);
+        }else {
             if (err) {
                 return responseToRequest.send("Erro.");
             }
