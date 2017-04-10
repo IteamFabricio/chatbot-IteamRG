@@ -105,6 +105,7 @@ function callWatson(payload, sender) {
             var i = 0;
             while (i < convResults.output.text.length)
                 setTimeout(geralistFastfood,2000,sender, convResults.output.text[i++]);
+            setTimeout(RespostaPadrao, 5000);
         }else {
             if (err) {
                 return responseToRequest.send("Erro.");
@@ -131,7 +132,7 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "McDonald's",
                         "image_url": "http://i.imgur.com/2Q39uEd.png",
-                        "subtitle": "Terminal 2, 2º Andar&#013 Área restrita doméstico&#013 Funcionamento: 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 2º Andar \r\n\r\n Área restrita doméstico - Funcionamento: 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -154,7 +155,7 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "Subway",
                         "image_url": "http://i.imgur.com/eFs5bzx.png",
-                        "subtitle": "Terminal 2, 1º Andar - Mezanino! - Área pública/Área restrita internacional/Área restrita doméstico - Funcionamento: 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino! - Área pública - Funcionamento: 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -522,7 +523,7 @@ function pesquisaVoo(sender, flightNumber) {
     });
 }
 function RespostaPadrao() {
-    sendMessage(sender, "Caso não tenha encontrado o retaurante ou lanchonete a lista, acesse o link http://www.riogaleao.com/places-categories/alimentacao/ para mais opções. Posso lhe auxiliar em algo mais?");
+    sendMessage(sender, "Posso lhe ajudar em algo mais?");
 }
 
 
