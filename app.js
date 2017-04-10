@@ -523,7 +523,7 @@ function pesquisaVoo(sender, flightNumber) {
     });
 }
 function RespostaPadrao() {
-    sendMessage(sender, "Posso lhe ajudar em algo mais?");
+    sendMessage(sender, "Posso lhe ajudar em algo mais, ou deseja visualizar novamente a lista de serviços?");
 }
 
 
