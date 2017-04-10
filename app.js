@@ -132,7 +132,7 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "McDonald's",
                         "image_url": "http://i.imgur.com/2Q39uEd.png",
-                        "subtitle": "Terminal 2, 2º Andar \r\n\r\n Área restrita doméstico - Funcionamento: 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 2º Andar \r\n Área restrita doméstico \r\n Funcionamento: 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -143,7 +143,7 @@ function geralistFastfood(sender,text_){
                     }, {
                         "title": "Spoleto",
                         "image_url": "http://i.imgur.com/GHAjDsr.png",
-                        "subtitle": "Terminal 2, 1º Andar - Mezanino - Área pública - Funcionamento: 06:00 às 00:00",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino \r\n Área pública \r\n Funcionamento: 06:00 às 00:00",
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -155,7 +155,7 @@ function geralistFastfood(sender,text_){
                     {
                         "title": "Subway",
                         "image_url": "http://i.imgur.com/eFs5bzx.png",
-                        "subtitle": "Terminal 2, 1º Andar - Mezanino! - Área pública - Funcionamento: 06:00 às 23:00",
+                        "subtitle": "Terminal 2, 1º Andar - Mezanino! \r\n Área pública \r\n Funcionamento: 06:00 às 23:00",
                         "buttons": [
                             {
                                 "type": "web_url",
