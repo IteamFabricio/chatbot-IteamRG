@@ -92,9 +92,9 @@ function callWatson(payload, sender) {
         }else if (nodeVisited && nodeVisited == 'Estabelecimento') {
             var i = 0;
             categoriaestabelcimento(sender, convResults.output.text[0]);
-        }else if (nodeVisited && nodeVisited == 'NodeFastFood') {
+        }else if (nodeVisited && nodeVisited == 'Cat_Estabelecimento') {
             var i = 0;
-            geralistFastfood(sender, convResults.output.text[0]);
+            categoriaAlimentacao(sender, convResults.output.text[0]);
         }
         else {
             if (err) {
@@ -250,7 +250,7 @@ function categoriaestabelcimento(sender, text_) {
                     }, {
                         "title": "Lojas",
                         "image_url": "http://i.imgur.com/rVtw41E.png",//Link para Imagens
-                        "subtitle": "Os melhores Serlf Services estão aqui.",
+                        "subtitle": "Contamos com as mais variades de lojas para lhe atender.",
                         "buttons": [
                             {
                                 "type": "postback",
@@ -262,7 +262,7 @@ function categoriaestabelcimento(sender, text_) {
                     {
                         "title": "Companhias Aéreas",
                         "image_url": "http://i.imgur.com/ov97kSb.png",//Link para Imagens 
-                        "subtitle": "As melhores lanchonetes estão aqui.",
+                        "subtitle": "Consulte as Companhias Aéreas.",
                         "buttons": [
                             {
                                 "type": "postback",
@@ -274,7 +274,7 @@ function categoriaestabelcimento(sender, text_) {
                     {
                         "title": "Serviços",
                         "image_url": "http://i.imgur.com/NVe5PJ2.png",//link para imagens 
-                        "subtitle": "As melhores marcas de conveniencias e Bombonieres estão aqui.",
+                        "subtitle": "Consulte nossos serviços. Estamos prontos para lhe atender.",
                         "buttons": [
                             {
                                 "type": "postback",
@@ -545,7 +545,7 @@ function sendMessage(sender, text_) {
     });
 
 };
-//Token Facebook
+
 var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD";
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
