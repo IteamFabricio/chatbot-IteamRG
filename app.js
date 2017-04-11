@@ -90,6 +90,7 @@ function callWatson(payload, sender) {
         } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
+            setTimeout(RespostaPadrao, 5000);//Teste Resposta padrao
         }else if ((nodeVisited && nodeVisited == 'Estabelecimento')||(nodeVisited && nodeVisited == 'BackListaServicos')) {
             sendMessage(sender, convResults.output.text[0]);
             var i = 0;
@@ -106,7 +107,14 @@ function callWatson(payload, sender) {
             while (i < convResults.output.text.length)
                 setTimeout(geralistFastfood,2000,sender, convResults.output.text[i++]);
             setTimeout(RespostaPadrao, 5000);
-        }else {
+        }else if ((nodeVisited && nodeVisited == 'ID_Restaurantes')&&(intents && intents[0].intent == 'McDonald')) {
+            sendMessage(sender, convResults.output.text[0]);
+            var i = 0;
+            while (i < convResults.output.text.length)
+                setTimeout(geraImagem,2000,sender, convResults.output.text[i++]);
+            setTimeout(RespostaPadrao, 5000);
+        }
+        else {
             if (err) {
                 return responseToRequest.send("Erro.");
             }
@@ -122,6 +130,46 @@ function callWatson(payload, sender) {
         }
     });
 }
+function geraImagem(sender,text_){
+    messageData = {
+        attachment: {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "McDonald's",
+                        "image_url": "http://i.imgur.com/2Q39uEd.png",
+                        "subtitle": "Terminal 2, 2º Andar \r\n Área restrita doméstico \r\n Funcionamento: 06:00 às 23:00",
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/mapa-do-aeroporto/?id=3071_6231",
+                                "title": "Veja no Mapa"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+    //setTimeout(RespostaPadrao, 5000);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: token },
+        method: 'POST',
+        json: {
+            recipient: { id: sender },
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
 function geralistFastfood(sender,text_){
     messageData = {
         attachment: {
