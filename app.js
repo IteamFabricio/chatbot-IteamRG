@@ -20,7 +20,7 @@ var workspace = process.env.WORKSPACE_ID || '5b821e1f-07b7-4525-b89b-7dad3deeb1e
 
 app.get('/webhook/', function (req, res) {
     //if (req.query['hub.verify_token'] === 'EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD') {
-    if (req.query['hub.verify_token'] === 'EAADPm2qKIL4BALfgDeX8cVeofUkl6t87WbZCRcfve72x7JgiOWQqmWJNN3WZBOGKoMjZBa3tDsCDSK2hpMVVqNFHt3DHDXQ92RdOvZBh258jdCbvlqed9ehGWxmLqQgjUXYQK39gHMdraD1s1bPVE1pe3mciewibnHWHAf6BtZBiU6XkZBrc3N') {        
+    if (req.query['hub.verify_token'] === 'EAADPm2qKIL4BADtrKHr2UeM3wty1NDg83ZB684RabhA1tppNNIC9DMNKqST7BQO6wZAmTh3jG4U3cVVYY7cJsewdexio7tbTbTzQ4VRMUGuvMaejcNRdf98zFYmjfEAAAY9APtjlhTHSyTzn235ity1TxnuBWjkDYdf8M8OSYxFZAqlEXJs') {        
         res.send(req.query['hub.challenge']);
     }
     res.send('Erro de validação no token.');
@@ -606,7 +606,7 @@ function sendMessage(sender, text_) {
 };
 
 //var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD";
-var token = "EAADPm2qKIL4BALfgDeX8cVeofUkl6t87WbZCRcfve72x7JgiOWQqmWJNN3WZBOGKoMjZBa3tDsCDSK2hpMVVqNFHt3DHDXQ92RdOvZBh258jdCbvlqed9ehGWxmLqQgjUXYQK39gHMdraD1s1bPVE1pe3mciewibnHWHAf6BtZBiU6XkZBrc3N";
+var token = "EAADPm2qKIL4BADtrKHr2UeM3wty1NDg83ZB684RabhA1tppNNIC9DMNKqST7BQO6wZAmTh3jG4U3cVVYY7cJsewdexio7tbTbTzQ4VRMUGuvMaejcNRdf98zFYmjfEAAAY9APtjlhTHSyTzn235ity1TxnuBWjkDYdf8M8OSYxFZAqlEXJs";
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
 app.listen(port, host);
