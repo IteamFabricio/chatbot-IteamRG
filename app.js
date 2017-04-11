@@ -107,7 +107,7 @@ function callWatson(payload, sender) {
             while (i < convResults.output.text.length)
                 setTimeout(geralistFastfood,2000,sender, convResults.output.text[i++]);
             setTimeout(RespostaPadrao, 5000);
-        }else if ((nodeVisited && nodeVisited == 'ID_Restaurantes')&&(intents && intents[0].intent == 'McDonald')) {
+        }else if ((nodeVisited && nodeVisited == 'ID_Restaurantes')&&(intents && intents[0].intent == 'MCdonald´s')) {
             sendMessage(sender, convResults.output.text[0]);
             var i = 0;
             while (i < convResults.output.text.length)
