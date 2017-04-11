@@ -90,7 +90,7 @@ function callWatson(payload, sender) {
         } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
-        }else if (nodeVisited && nodeVisited == 'Estabelecimento') {
+        }else if ((nodeVisited && nodeVisited == 'Estabelecimento')||(nodeVisited && nodeVisited == 'BackListaServicos')) {
             sendMessage(sender, convResults.output.text[0]);
             var i = 0;
             while (i < convResults.output.text.length)
