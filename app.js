@@ -19,7 +19,8 @@ var w_conversation = watson.conversation({
 var workspace = process.env.WORKSPACE_ID || '5b821e1f-07b7-4525-b89b-7dad3deeb1e1';
 
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD') {
+    //if (req.query['hub.verify_token'] === 'EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD') {
+    if (req.query['hub.verify_token'] === 'EAADPm2qKIL4BALfgDeX8cVeofUkl6t87WbZCRcfve72x7JgiOWQqmWJNN3WZBOGKoMjZBa3tDsCDSK2hpMVVqNFHt3DHDXQ92RdOvZBh258jdCbvlqed9ehGWxmLqQgjUXYQK39gHMdraD1s1bPVE1pe3mciewibnHWHAf6BtZBiU6XkZBrc3N') {        
         res.send(req.query['hub.challenge']);
     }
     res.send('Erro de validação no token.');
@@ -90,7 +91,7 @@ function callWatson(payload, sender) {
         } else if (nodeVisited && nodeVisited == 'GetNumVoo') {
             var i = 0;
             pesquisaVoo(sender, convResults.output.text[0]);
-            setTimeout(RespostaPadrao, 5000);//Teste Resposta padrao
+            setTimeout(RespostaPadrao, 6000);//Teste Resposta padrao
         }else if ((nodeVisited && nodeVisited == 'Estabelecimento')||(nodeVisited && nodeVisited == 'BackListaServicos')) {
             sendMessage(sender, convResults.output.text[0]);
             var i = 0;
@@ -463,7 +464,7 @@ function sendMessageInitial(sender, text_) {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": "https://algartelecom.com.br/medias-grandes-empresas/",
+                                "url": "http://www.riogaleao.com/guia-do-aeroporto/",
                                 "title": "Veja no Site"
                             },
                             {
@@ -604,7 +605,8 @@ function sendMessage(sender, text_) {
 
 };
 
-var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD";
+//var token = "EAAavPTKA4OcBAAbUWjwsJdur9B0qfZBZB8jdSHeo3EmRZCZCAMxeS6SqXfE23XeAl8DZCfTykRMYhap6VlCHvZCUYrl8I1Iv5ZAZC1Cl39eOgikSAvPtrCgeap8LdvcsNHxKQ5JjVN5pZCr4xqZAh4IdMmmhDxoVxtB9Ef1Vc99AjB9wZDZD";
+var token = "EAADPm2qKIL4BALfgDeX8cVeofUkl6t87WbZCRcfve72x7JgiOWQqmWJNN3WZBOGKoMjZBa3tDsCDSK2hpMVVqNFHt3DHDXQ92RdOvZBh258jdCbvlqed9ehGWxmLqQgjUXYQK39gHMdraD1s1bPVE1pe3mciewibnHWHAf6BtZBiU6XkZBrc3N";
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
 app.listen(port, host);
